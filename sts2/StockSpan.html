@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public int[] calculateSpan(int[] stockPrices) {
+        int n = stockPrices.length;
+        int[] span = new int[n];
+        span[0] = 1; // The span of the first day is always 1.
+        for (int i = 1; i < n; i++) {
+            span[i] = 1; // Initialize the span for the current day.
+            int j = i - 1;
+            while (j >= 0 && stockPrices[i] >= stockPrices[j]) {
+                span[i]++;
+                j--;
+            }
+        }
+        return span;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of days: ");
+        int n = scanner.nextInt();
+        int[] stockPrices = new int[n];
+
+        System.out.println("Enter the stock prices for each day:");
+        for (int i = 0; i < n; i++) {
+            stockPrices[i] = scanner.nextInt();
+        }
+
+        scanner.close();
+
+        Main calculator = new Main();
+        int[] spans = calculator.calculateSpan(stockPrices);
+
+        System.out.println("Stock Prices: " + Arrays.toString(stockPrices));
+        System.out.println("Stock Spans: " + Arrays.toString(spans));
+    }
+}

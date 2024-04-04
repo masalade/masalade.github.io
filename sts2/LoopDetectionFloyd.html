@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class LinkedList {
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
+    Node head;
+
+    void push(int newData) {
+        Node newNode = new Node(newData);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    void detectLoopAndPrint() {
+        Node slow = head, fast = head;
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                System.out.println("Loop found");
+                return;
+            }
+        }
+        System.out.println("Loop not found");
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        LinkedList list = new LinkedList();
+
+        System.out.print("Enter the number of elements: ");
+        int n = scanner.nextInt();
+
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {
+            int data = scanner.nextInt();
+            list.push(data);
+        }
+
+        System.out.print("Enter the position to create a loop (0-based indexing): ");
+        int loopPosition = scanner.nextInt();
+        Node currentNode = list.head;
+        while (loopPosition > 0) {
+            currentNode = currentNode.next;
+            loopPosition--;
+        }
+        Node lastNode = list.head;
+        while (lastNode.next != null) {
+            lastNode = lastNode.next;
+        }
+        lastNode.next = currentNode;
+
+        list.detectLoopAndPrint();
+
+        scanner.close();
+    }
+}

@@ -1,0 +1,33 @@
+public class Main
+{
+	public static void main(String[] args) {
+	  int a[]={1,3,2,2,2,2,3};
+	  int n=a.length;
+	  majority(a,n);
+	}
+	public static void majority(int a[],int n)
+	{
+	    int max=0;
+	    int index=0;
+	    int count,i;
+	    for(i=0;i<n;i++)
+	    {
+	        count=0;
+	        for(int j=0;j<n;j++)
+	        {
+	            if (a[i]==a[j])
+	            count++;
+	        }
+	        if(max<count)
+	        {
+	            max=count;
+	            index=i;
+	        }
+	    }
+	    if(max>(n/2))
+	    System.out.println(a[index]);
+	    else
+	    System.out.println("No majority element");
+	}
+	        
+}

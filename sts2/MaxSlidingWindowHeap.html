@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class Main {
+    public static int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || nums.length == 0) return new int[0];
+        int n = nums.length;
+        int[] result = new int[n - k + 1];
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        for (int i = 0; i < n; i++) {
+            if (i >= k) {
+                maxHeap.remove(nums[i - k]);
+            }
+            maxHeap.offer(nums[i]);
+            if (i >= k - 1) {
+                result[i - k + 1] = maxHeap.peek();
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements in the array: ");
+        int n = scanner.nextInt();
+        int[] nums = new int[n];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            nums[i] = scanner.nextInt();
+        }
+
+        System.out.print("Enter the window size (k): ");
+        int k = scanner.nextInt();
+
+        int[] result = maxSlidingWindow(nums, k);
+
+        System.out.println("Maximum sliding window:");
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
+
+        scanner.close();
+    }
+}
