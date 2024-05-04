@@ -1,0 +1,92 @@
+ // hashset
+ import java.util.*;
+ public class Main {
+ public static void main(String[] args) {
+ Set<Integer> set1=new HashSet<>();
+ //add
+ set1.add(35);
+ set1.add(12);
+ set1.add(89);
+ set1.add(18);
+ set1.add(12);
+ System.out.println("set1 : "+set1);
+ //remove
+ set1.remove(89);
+//contains
+ System.out.println(set1.contains(35));
+ for(Integer i:set1)
+ {
+ System.out.print(i+" ");
+ }
+ System.out.println();
+ Set<Integer> set2=new HashSet<>();
+ set2.add(4);
+ set2.add(2);
+ set2.add(5);
+ set2.add(18);
+ set2.addAll(set1);
+ System.out.println(set2);
+ }
+ }
+
+ // treeset
+ import java.util.*;
+ public class Main {
+ public static void main(String[] args) {
+ Set<Integer> set1=new TreeSet<>();
+ //add
+ set1.add(35);
+ set1.add(12);
+ set1.add(89);
+ set1.add(18);
+ set1.add(12);
+ System.out.println("set1 : "+set1);
+ //remove
+ set1.remove(89);
+ //contains
+ System.out.println(set1.contains(35));
+ for(Integer i:set1)
+ {
+ System.out.print(i+" ");
+ }
+ System.out.println();
+ Set<Integer> set2=new TreeSet<>();
+ set2.add(4);
+ set2.add(2);
+ set2.add(5);
+ set2.add(18);
+ set2.addAll(set1);
+ System.out.println(set2);
+ }
+}
+
+// linkedhashset
+ import java.util.*;
+ public class Main {
+ public static void main(String[] args) {
+ Set<Integer> set1=new LinkedHashSet<>();
+ //add
+ set1.add(35);
+ set1.add(12);
+ set1.add(89);
+ set1.add(18);
+ set1.add(12);
+ System.out.println("set1 : "+set1);
+ //remove
+ set1.remove(89);
+ //contains
+System.out.println(set1.contains(35));
+ for(Integer i:set1)
+ {
+ System.out.print(i+" ");
+ }
+ System.out.println();
+ Set<Integer> set2=new LinkedHashSet<>();
+ set2.add(4);
+ set2.add(2);
+ set2.add(5);
+ set2.add(18);
+ set2.addAll(set1);
+ System.out.println(set2);
+ }
+ }
